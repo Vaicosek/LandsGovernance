@@ -1,0 +1,42 @@
+plugins {
+    id 'java'
+}
+
+group = 'dev.abex'
+
+repositories {
+    mavenCentral()
+    maven { url = 'https://jitpack.io' }
+    maven { url = 'https://repo.papermc.io/repository/maven-public/' }
+}
+
+dependencies {
+    compileOnly "io.papermc.paper:paper-api:${paper_api_version}"
+    compileOnly 'com.google.code.gson:gson:2.13.1'
+    compileOnly 'com.github.MilkBowl:VaultAPI:1.7.1'
+
+    testImplementation 'com.google.code.gson:gson:2.13.1'
+    testImplementation 'org.mockbukkit.mockbukkit:mockbukkit-v26.3:4.118.0'
+    // MockBukkit expects the API on the test classpath; compileOnly keeps it out of the jar.
+    testImplementation "io.papermc.paper:paper-api:${paper_api_version}"
+    testImplementation 'com.github.MilkBowl:VaultAPI:1.7.1'
+    testImplementation platform('org.junit:junit-bom:5.13.4')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
+}
+
+java {
+    toolchain { languageVersion = JavaLanguageVersion.of(25) }
+}
+
+processResources {
+    inputs.property 'version', project.version
+    filesMatching('plugin.yml') { expand(version: project.version) }
+}
+
+test {
+    useJUnitPlatform()
+    testLogging { events 'failed'; exceptionFormat 'full' }
+}
+
+base { archivesName = 'cities' }

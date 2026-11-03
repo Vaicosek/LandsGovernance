@@ -1,0 +1,24 @@
+CityBot2 | Your balance was set to $100.
+=== owner CityBot1 offline; CityBot2 trades
+CityBot2 >> /c shop buy
+CityBot2 | Cities Bought 2 diamond for 10.0.
+CityBot2 >> /c shop buy
+CityBot2 | Cities Bought 2 diamond for 10.0.
+CityBot2 >> /c shop sell
+CityBot2 | Cities Sold 2 diamond for 4.0.
+=== CityBot1 joins
+CityBot1 | Cities While you were away: 3 sales, +20.00 / -4.00 [Shop log]
+CityBot1 | Cities Low stock: diamond at world:10:-59:4
+CityBot1 | Cities Tip: This summary shows unread shop income and expenses, plus shops needing stock. /c shop log shows all your sales and marks them read.
+CityBot1 >> /c shop log
+CityBot1 | Cities Shop log — Page 1/1
+CityBot1 | Cities #3 2026-11-03T15:32:47.866Z CityBot2 sold 2 diamond for 4.00 at world:3:-59:10
+CityBot1 | Cities #2 2026-11-03T15:32:46.357Z CityBot2 bought 2 diamond for 10.00 at world:3:-59:10
+CityBot1 | Cities #1 2026-11-03T15:32:44.901Z CityBot2 bought 2 diamond for 10.00 at world:3:-59:10
+CityBot1 | 
+CityBot1 >> /c shop log
+CityBot1 | Cities Shop log — Page 1/1
+CityBot1 | Cities #3 2026-11-03T15:32:47.866Z CityBot2 sold 2 diamond for 4.00 at world:3:-59:10
+CityBot1 | Cities #2 2026-11-03T15:32:46.357Z CityBot2 bought 2 diamond for 10.00 at world:3:-59:10
+CityBot1 | Cities #1 2026-11-03T15:32:44.901Z CityBot2 bought 2 diamond for 10.00 at world:3:-59:10
+CityBot1 | 

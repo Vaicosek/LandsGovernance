@@ -1,0 +1,44 @@
+CityBot1 | Your balance was set to $100.
+CityBot2 | Your balance was set to $100.
+=== player shop: 2 diamond, buy 10, sell 4
+CityBot1 >> /c shop create 2 10 4
+CityBot1 | Cities Shop opened.
+CityBot2 >> /c shop remove
+CityBot2 | Cities Only the shop's owner can close it.
+CityBot2 >> /c shop buy
+CityBot2 | Cities Bought 2 diamond for 10.0.
+CityBot2 >> /c shop sell
+CityBot2 | Cities Sold 2 diamond for 4.0.
+=== CityBot2 right-clicks the chest (must trade, not open)
+=== city shop: 1 bread, buy 5, sell 3, Botland treasury
+CityBot1 >> /c treasury
+CityBot1 | Cities Botland treasury: 40.0
+CityBot1 | Cities 2026-11-03T15:19:50.069Z CityBot1 20.0 Deposit
+CityBot1 | Cities 2026-11-03T15:17:50.073Z CityBot1 20.0 Deposit
+CityBot1 >> /c shop create 1 5 3 city
+CityBot1 | Cities City shop opened for Botland.
+CityBot2 >> /c shop buy
+CityBot2 | Cities Bought 1 bread for 5.0.
+CityBot1 >> /c treasury
+CityBot1 | Cities Botland treasury: 45.0
+CityBot1 | Cities 2026-11-03T15:22:12.002Z CityBot2 5.0 Shop sale
+CityBot1 | Cities 2026-11-03T15:19:50.069Z CityBot1 20.0 Deposit
+CityBot1 | Cities 2026-11-03T15:17:50.073Z CityBot1 20.0 Deposit
+CityBot2 >> /c shop sell
+CityBot2 | Cities Sold 1 bread for 3.0.
+CityBot1 >> /c treasury
+CityBot1 | Cities Botland treasury: 42.0
+CityBot1 | Cities 2026-11-03T15:22:15.029Z CityBot2 -3.0 Shop purchase
+CityBot1 | Cities 2026-11-03T15:22:12.002Z CityBot2 5.0 Shop sale
+CityBot1 | Cities 2026-11-03T15:19:50.069Z CityBot1 20.0 Deposit
+CityBot1 | Cities 2026-11-03T15:17:50.073Z CityBot1 20.0 Deposit
+=== server console (live13.log)
+[16:21:57 INFO]: System chat: 3, -58, 10 has the following block data: {has_glowing_text: 0b, color: "black", messages: ["[Shop]", "2 diamond", "B 10.0 S 4.0", "CityBot1"]}
+[16:22:00 INFO]: Balance of CityBot1: $110
+[16:22:00 INFO]: Balance of CityBot2: $90
+[16:22:03 INFO]: Balance of CityBot1: $106
+[16:22:03 INFO]: Balance of CityBot2: $94
+[16:22:06 INFO]: Balance of CityBot1: $106
+[16:22:06 INFO]: Balance of CityBot2: $94
+[16:22:18 INFO]: Balance of CityBot1: $106
+[16:22:18 INFO]: Balance of CityBot2: $92

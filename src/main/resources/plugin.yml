@@ -1,0 +1,16 @@
+name: Cities
+version: '${version}'
+main: dev.abex.gov.bukkit.GovPlugin
+api-version: '26.3'
+description: City claims, elections, vetted accounts and charters.
+author: Vaicos
+softdepend: [Vault]
+commands:
+  c:
+    aliases: [city, cities]
+    description: "Your city: claims, members, elections"
+    usage: /c
+permissions:
+  cities.admin:
+    description: Vet players by hand and close elections.
+    default: op

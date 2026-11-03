@@ -1,0 +1,90 @@
+roles:            # highest first; the first is the owner role
+  Owner: [BUILD, CONTAINERS, INTERACT, INVITE, KICK, CLAIM, SET_ROLES, PLOTS, SETTINGS, BANK, BAN]
+  Count: [BUILD, CONTAINERS, INTERACT, INVITE, KICK, CLAIM, SET_ROLES, PLOTS, SETTINGS, BANK, BAN]
+  Admin: [BUILD, CONTAINERS, INTERACT, INVITE, KICK, CLAIM, PLOTS, SETTINGS, BAN]
+  Citizen: [BUILD, CONTAINERS, INTERACT, INVITE]
+  Member: [INTERACT]
+claims:
+  base-chunks: 8
+  chunks-per-member: 4
+
+# Days a member must hold one of the voting-roles before they can vote or run.
+tenure-days: 7
+# Roles that count toward voting tenure.
+voting-roles: [Citizen, Admin, Count, Owner]
+# First start only: members already holding a voting role count as fully tenured,
+# so elections work on day one instead of a week after install.
+grandfather-existing-members: true
+
+vetting:
+  min-playtime-hours: 10
+  # An account can't get vetted from a connection another vetted account used. IPs are only stored hashed.
+  one-vetted-account-per-ip: true
+
+elections:
+  default-hours: 48
+  # Fewer votes than this: the election closes and nothing changes.
+  min-voters: 3
+
+charter:
+  # Council/republic cities re-elect each office this often.
+  term-days: 30
+  # How long revoking a signed charter takes. Members are told when it starts.
+  revoke-notice-days: 14
+
+spawn:
+  warmup-seconds: 3
+flags:
+  pvp: false
+  monsters: true
+  fire: false
+  explosions: false
+  public: false
+  visitor-interact: false
+  visitor-containers: false
+economy:
+  day-hour: 0
+  upkeep-per-chunk: 1
+  upkeep-grace-days: 3
+  max-tax: 100
+  # Maximum visitor arrival fee for a city or estate; members travel free.
+  max-spawn-fee: 100
+  tax-grace-days: 3
+
+# Realms group cities; electing the ruler never transfers the capital's ownership.
+realms:
+  # Paid from the founding city's treasury; free without an economy.
+  create-cost: 1000
+  term-days: 14
+  # City join tenure is checked at ballot opening, preventing imported votes.
+  join-tenure-days: 7
+  # Total realm withdrawals per UTC day while an election is open.
+  election-withdraw-cap: 100
+  max-tax: 100
+  # Consecutive unpaid taxes remove a non-capital city automatically.
+  unpaid-days-kick: 3
+  # Initial visitor fee; /c realm fee changes it. Members/allies travel free.
+  spawn-fee: 0
+  # Highest first. Only the ruler holds the first role; unassigned members have no realm powers.
+  roles:
+    Ruler: [REALM_INVITE, REALM_KICK, REALM_TREASURY, REALM_TAX, REALM_RELATIONS, REALM_SPAWN, REALM_ROLES]
+    Chancellor: [REALM_INVITE, REALM_KICK, REALM_TREASURY, REALM_TAX, REALM_RELATIONS, REALM_SPAWN]
+    Steward: [REALM_TREASURY, REALM_TAX]
+    Envoy: [REALM_RELATIONS, REALM_INVITE]
+relations:
+  # Private lot/estate build and container rules still take priority.
+  ally-perms: [INTERACT]
+  # Neutral does not bypass this enemy-declaration lock.
+  truce-days: 3
+  enemy-delay-hours: 24
+  # Override PvP flags inside the two opposing realms' cities.
+  enemy-pvp: true
+
+# Signed shop sale feed. Leave URL, market-id and key empty to disable.
+feed:
+  url: ""
+  market-id: ""
+  key: ""
+  server-id: "cities"
+  # Public Restocker base URL, e.g. https://restocker.example (no /shops suffix).
+  web_base: ""

@@ -1,0 +1,41 @@
+roles:            # highest first; the first is the owner role
+  Owner: [BUILD, CONTAINERS, INTERACT, INVITE, KICK, CLAIM, SET_ROLES, PLOTS, SETTINGS, BANK, BAN]
+  Count: [BUILD, CONTAINERS, INTERACT, INVITE, KICK, CLAIM, SET_ROLES, PLOTS, SETTINGS, BANK, BAN]
+  Admin: [BUILD, CONTAINERS, INTERACT, INVITE, KICK, CLAIM, PLOTS, SETTINGS, BAN]
+  Citizen: [BUILD, CONTAINERS, INTERACT, INVITE]
+  Member: [INTERACT]
+claims:
+  base-chunks: 8
+  chunks-per-member: 4
+
+# Copy over plugins/Cities/config.yml on a TEST server so one person
+# with a couple of offline-mode alts can run a whole election in minutes.
+tenure-days: 0
+voting-roles: [Citizen, Admin, Count, Owner, Member]
+grandfather-existing-members: true
+vetting:
+  min-playtime-hours: 0
+  one-vetted-account-per-ip: false
+elections:
+  default-hours: 1
+  min-voters: 1
+charter:
+  term-days: 1
+  revoke-notice-days: 1
+
+spawn:
+  warmup-seconds: 0
+flags:
+  pvp: false
+  monsters: true
+  fire: false
+  explosions: false
+  public: false
+  visitor-interact: false
+  visitor-containers: false
+economy:
+  day-hour: 0
+  upkeep-per-chunk: 0
+  upkeep-grace-days: 3
+  max-tax: 100
+  tax-grace-days: 3

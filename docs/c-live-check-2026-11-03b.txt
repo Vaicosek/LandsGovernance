@@ -1,0 +1,26 @@
+MSG CityBot1 joined the game
+SPAWN Vec3 { x: 7.5, y: -60, z: 3.5 }
+>> /c
+MSG Cities Manor — owner: CityBot1; fee: 0.0; treasury: 0.0 [Spawn]
+MSG [Treasury] [Public off]
+MSG Cities Botland has no realm.
+MSG [Map] [Cities] [Flags] [Spawn]
+MSG Cities Botland: owner CityBot1, your role: Owner, lot owner: CityBot1.
+MSG Cities You are not vetted, so you can't vote or run. [Get vetted]
+MSG Cities Botland: Owner, 0 days. Charter: none.
+>> /c info Botland
+MSG Cities Botland — owner: CityBot1; members: 1; chunks: 1; charter: none.
+MSG Cities Visitor flags: {pvp=false, monsters=true, fire=false, explosions=false, public=false, visitor-interact=false, visitor-containers=false}
+MSG Cities Manor — owner: CityBot1 [Spawn (0.0)]
+MSG [Spawn (0.0)]
+>> /c list
+MSG Cities (page 1/1)
+MSG [Testland] 6 members
+MSG [Botland] 1 member
+MSG CityBot2 joined the game
+SPAWN Vec3 { x: 1.5, y: -60, z: -8.5 }
+>> /c
+MSG [Map] [Cities] [Flags] [Spawn]
+MSG Cities Wilderness.
+MSG Cities You are not vetted, so you can't vote or run. [Get vetted]
+MSG Cities You aren't a member of any city.

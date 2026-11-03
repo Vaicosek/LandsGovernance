@@ -103,49 +103,30 @@ offline members see open elections through `/c`.
 
 ## Install on a server
 
-John must create the plugin GitHub repository and push the source, including the
-Gradle wrapper JAR and scripts. Replace OWNER/REPO below with that repository.
-Run these commands **on the Linux build host only**. Use JDK 25 (java and javac),
-Git and Bash; Gradle downloads its distribution/dependencies on first build.
-For private repositories add a read-only host deploy key, or authenticate a
-credential-free HTTPS URL with a scoped token through the host credential facility.
-Never embed a token in URLs or files in the repository.
+Cities runs inside the Minecraft server. Build on a machine with JDK 25 and
+Bash, then upload the jar to the Minecraft panel; the AbexTech Python container
+is not the plugin build or Minecraft host. Include the Gradle wrapper JAR and
+scripts with the source. Gradle downloads its distribution/dependencies on the
+first build. No administrator access or host service setup is required.
 
-Copy install.sh to /tmp/cities-install.sh on the host, then:
+From an existing source checkout, pass an existing writable output directory:
 
 ~~~sh
-java -version
-javac -version
-bash /tmp/cities-install.sh git@github.com:OWNER/REPO.git /opt/cities-src main
+bash install.sh /path/to/upload-directory
 ~~~
 
-Choose an absolute checkout path your deploy account can create (for example
-/home/deploy/cities-src if /opt is not writable). The installer clones or
-fast-forward pulls a clean checkout, copies the informational .env.example when
-.env is missing, and runs ./gradlew build. Cities is Java, so it needs no Python
-venv, pip requirements or separate systemd unit: it runs inside Minecraft.
-The plugin reads no environment variables; .env is not used for plugin settings.
+install.sh only runs the Gradle build and copies build/libs/cities-0.2.0.jar to
+that directory. It does not clone/update source, create .env or start/stop servers.
+You may pass the Minecraft plugins directory only after stopping Minecraft and
+backing up its data. The plugin does not read .env; settings belong in
+plugins/Cities/config.yml.
 
-For an existing checkout, the exact manual build steps are:
-
-~~~sh
-cd /opt/cities-src
-chmod u+x gradlew
-./gradlew build
-~~~
-
-The resulting file is build/libs/cities-0.2.0.jar. Run Paper 26.3 with Java 25.
-Install Vault and an economy provider for economy functions. Stop Minecraft
-through the host panel, back up plugins/Cities and the old JAR, remove the old
-Cities JAR from plugins/ (avoid duplicate versions), then copy the built JAR:
-
-~~~sh
-cp /opt/cities-src/build/libs/cities-0.2.0.jar /path/to/minecraft/plugins/
-~~~
-
-Start Minecraft once to generate plugins/Cities/config.yml, stop it, edit that
-host-only file, then start again. Preserve plugins/Cities/data.json and all
-other plugin state on updates. Do not use a live plugin reload.
+Run Paper 26.3 with Java 25. Install Vault and an economy provider for economy
+functions. Stop Minecraft through its panel, back up plugins/Cities and the old
+jar, remove the old Cities jar from plugins/ to avoid duplicate versions, and
+upload the built jar there using Files/SFTP. Start once to generate
+plugins/Cities/config.yml, stop, edit that host-only file, then start again.
+Preserve plugins/Cities/data.json and other plugin state. Do not use live reload.
 
 ### Restocker shop feed
 
@@ -178,8 +159,8 @@ for signed requests. Test a sale and the in-game shop web link after configurati
 
 ### Updating
 
-On the build host rerun the installer with the same URL, path and branch. It
-refuses a dirty checkout or different origin/branch. After a successful build,
-stop Minecraft, back up its data, replace the JAR as above, and start it again.
-A restricted hosting panel can accept a JAR built on another JDK 25 machine;
-it does not need Git, Gradle or systemd inside the Minecraft container.
+Update the source checkout on the build host through its repository tooling or
+SFTP upload, rerun install.sh with the output directory, then stop Minecraft,
+back up plugin data and replace the jar through Files/SFTP as above. Restart and
+check Console, a Cities command, a test sale and its shop link. The Minecraft
+panel only needs the built jar and persistent plugin configuration/data.
